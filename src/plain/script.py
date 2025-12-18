@@ -18,10 +18,10 @@ img = convert_tensor(img)
 img = img.unsqueeze(0)
 
 np.set_printoptions(precision=3)
-np.set_string_function(lambda x: repr(x), repr=False)
+np.set_printoptions(suppress=True)
 
 result = model(img)
 
 result_list = my_formatted_list = list(np.around(result[0].detach().numpy(),3))
 
-print("Plain:  " + str(result_list))
+print(f"Result: [ {', '.join([str(i) for i in result_list])} ]")
